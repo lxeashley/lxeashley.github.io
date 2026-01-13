@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <title>chatroom cuties :3</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <style>
+          .game-viewport {
+            width: 960px;
+            height: 540px;
+            position: relative;
+            overflow: hidden;
+            background-image: url(01images/background.jpg);
+          }
+          
+          .ui-layer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+          }
+          
+          .text-frame {
+            position: relative;
+            width: 900px;
+            height: 416.8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .frame-bg {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+          }
+          
+          .text-content {
+            position: relative; 
+            z-index: 2; 
+            color: #f1f1f1;
+            font-family: "Zalando Sans Expanded";
+            font-weight: 400;
+            font-size: 20px;
+            width: max-content; 
+            margin: 0 auto;
+            padding: 40px;
+            display: inline-block;
+            white-space: nowrap; 
+            overflow: hidden;
+            animation: 
+            typing 4s steps(36, end)forwards,
+            blink-caret .5s step-end infinite;
+            z-index: 2;
+            text-align: center;
+            max-width: 80%;
+            pointer-events: none;
+          }
+
+          .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 940px;
+            position: relative;
+            z-index: 999
+          }
+          
+          .action-btn {
+            cursor: pointer;
+            transition: transform 0.1s;
+            height: 83.36px;
+            width: auto;
+            pointer-events: auto;
+          }
+          
+          .action-btn:hover {
+            transform: scale(1.1);
+          }
+          
+          .action-btn:active {
+            transform: scale(0.95);
+          }
+          
+          .action-btn.disabled {
+            filter: grayscale(100%) brightness(50%);
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.6;
+          }
+
+          body{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:url(01images/background.jpg);
+            overflow: hidden;
+          }
+          
+          @keyframes typing {
+            from { max-width: 0 }
+            to { max-width: 100% }
+          }
+
+          @keyframes blink-caret {
+            from, to { border-color: transparent }
+          }
+        </style>
+  </head>
+  
+  <body>
+    <div class="game-viewport">
+      <audio autoplay>
+        <source src="02audio/chill-drum-loop-6887.mp3" type="audio/mp3">
+      </audio>
+      <div class="ui-layer">
+        <div class="text-frame">
+          <img src="01images/alex_99border.png" alt="border" class="frame-bg">
+          <div class="text-content">Oh... Um sorry for the late reply, work was super hectic today!<br>How was your day though?<br>Hopefully a bit more relaxing than mine haha!</div>
+        </div>
+        <div class="button-row">
+          <audio id="click-sound" preload="auto">
+            <source src="02audio/game-start-6104.mp3" type="audio/mp3">
+          </audio>
+          <img src="01images/chatbutton.png" class="action-btn" 
+          onclick="triggerStandardPopUp('You said: Yeah, today was pretty chill, hope you get some good rest though!', 'page13.html')">
+          <img src="01images/checkbutton.png" class="action-btn"
+          onclick="triggerStandardPopUp('You said: What do you even do that is so busy…', 'page14.html')">
+          <img src="01images/blockbutton.png" class="action-btn disabled">
+          <img src="01images/rejectbutton.png" class="action-btn disabled">
+          <img src="01images/acceptbutton.png" class="action-btn disabled">
+      </div>
+    </div>
+  </body>
+
+  <script>
+  function triggerStandardPopUp(message, destination) {
+    const sound = document.getElementById('click-sound');
+    
+    if (sound) sound.play();
+    const userConfirmed = window.confirm(message);
+
+    if (userConfirmed) {
+      window.location.href = destination;
+    }
+  }
+  </script>
+
+</html>
