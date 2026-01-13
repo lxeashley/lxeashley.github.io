@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <title>chatroom cuties :3</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <style>
+          #heart-wipe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ff1493;
+            z-index: 9999;
+            pointer-events: none;
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: 0%;
+            mask-size: 0%;
+            transition: -webkit-mask-size 1.2s ease-in;
+            transition: mask-size 1.2s ease-in;
+          }
+          
+          #heart-wipe.active {
+            -webkit-mask-size: 800%;
+            mask-size: 800%;
+          }
+
+          body{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image:url(01images/background.jpg);
+            overflow: hidden;
+          }
+
+          h3{
+            color: #f1f1f1;
+            font-family: "Zalando Sans Expanded";
+            font-weight: 400;
+            font-size: 20px;
+            width: max-content; 
+            margin: 0 auto;
+            padding: 40px;
+            display: inline-block;
+            white-space: nowrap; 
+            overflow: hidden;
+            animation: 
+            typing 4s steps(36, end)forwards,
+            blink-caret .5s step-end infinite;
+            z-index: 2;
+          }
+          
+          @keyframes typing {
+            from { max-width: 0 }
+            to { max-width: 100% }
+          }
+
+          @keyframes blink-caret {
+            from, to { border-color: transparent }
+          }
+        </style>
+  </head>
+  
+  <body>
+    <div id="heart-wipe"></div>
+    <audio autoplay>
+      <source src="02audio/chill-lofi-vibe-301602.mp3" type="audio/mp3">
+    </audio>
+    <img src="01images/chatroomcuties_logo.png" data-aos="zoom-in" data-aos-duration="1000" width="400">
+    <h3>the ultimate test of love and logic!</h3>
+    <a id="start-link" style="cursor: pointer;">
+      <audio id="start-sound">
+        <source src="02audio/game-start-6104.mp3" type="audio/mp3">
+      </audio>
+      <img src="01images/startbutton.png" data-aos="zoom-in" data-aos-duration="1000" width="200">
+    </a>
+  </body>
+  
+  <script>
+  AOS.init();
+  </script>
+
+  <script>
+    const startLink = document.getElementById('start-link');
+    const startSound = document.getElementById('start-sound');
+    const heartWipe = document.getElementById('heart-wipe');
+    startLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      startSound.volume = 1.0;
+      startSound.play();
+      heartWipe.classList.add('active');
+      const fadeAudio = setInterval(() => {
+        if (startSound.volume > 0.1) {
+          startSound.volume -= 0.1;
+        } else {
+          clearInterval(fadeAudio);
+        }
+      }, 100);
+      setTimeout(() => {
+        window.location.href = "page2.html";
+      }, 1200); 
+    });
+  </script>
+
+</html>
